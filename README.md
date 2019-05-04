@@ -1,6 +1,6 @@
 # contact-form
 
-Built with [create-react-app](https://github.com/facebookincubator/create-react-app) and [express](https://expressjs.com/) server for development.  Optimized for Heroku deployment.
+Built with [create-react-app](https://github.com/facebookincubator/create-react-app) and [express](https://expressjs.com/) server for development.
 
 ## Features
 
