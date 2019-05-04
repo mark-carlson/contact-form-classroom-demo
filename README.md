@@ -17,13 +17,7 @@ Built with [create-react-app](https://github.com/facebookincubator/create-react-
 ## Installing
 
 ```
-npm install && cd frontend && npm install && cd ..
-```
-
-Enter gmail account and base64 encoded password in /server/config/env.js. Then...
-
-```
-npm run build
+npm install
 ```
 
 To authorize gmail access from Heroku, visit this site after deployment:  [http://www.google.com/accounts/DisplayUnlockCaptcha](http://www.google.com/accounts/DisplayUnlockCaptcha)
@@ -31,7 +25,7 @@ To authorize gmail access from Heroku, visit this site after deployment:  [http:
 ## Communication
 
 ### Dev
-For Development, the webpack-dev-server is running on port 3000 serving react app, and the backend express server is running on port 4000. All of the requests sent by frontend app will be passed to express server via proxy.
+For Development, the webpack-dev-server is running on port 3000 serving react app, and the backend express server is running on port 3001. All of the requests sent by frontend app will be passed to express server via proxy.
 
 Web App <--- Webpack-dev-server <---> Proxy <---> Express Server
 

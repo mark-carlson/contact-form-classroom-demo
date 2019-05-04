@@ -16,7 +16,7 @@ const sendMailFromGmail = (req, res, next) => {
             user: '<your gmail account>@gmail.com',
             pass: '<your password>'
         }
-    });
+    }); //consider using .env variables here for your user & pass.
 
     let htmlTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/email.html'), 'UTF-8');
     for (const key in elementMap) {
