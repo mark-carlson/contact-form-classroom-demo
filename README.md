@@ -1,4 +1,4 @@
-# contact-form
+# Contact Form
 
 Built with [create-react-app](https://github.com/facebookincubator/create-react-app) and [express](https://expressjs.com/) server for development.
 
