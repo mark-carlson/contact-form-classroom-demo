@@ -16,15 +16,15 @@ const sendMailFromGmail = (req, res, next) => {
             user: '<your gmail account>@gmail.com',
             pass: '<your password>'
         }
-    }); //consider using .env variables here for your user & pass.
+    }); //NOTE:  Use .env variables here for your user & pass.  Keep your credentials out of your github repo.
 
     let htmlTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/email.html'), 'UTF-8');
     for (const key in elementMap) {
         htmlTemplate = htmlTemplate.replace(new RegExp(`__${elementMap[key]}__`, 'g'), req.body[key]);
     }
-    htmlTemplate = htmlTemplate.replace(new RegExp(`__SITE__`, 'g'), "mc.dev");
+    htmlTemplate = htmlTemplate.replace(new RegExp(`__SITE__`, 'g'), "mc.dev"); // <-- enter your website here
 
-    const sendTo = ['<your email here>']; // array of recipients
+    const sendTo = ['<your email here>']; // array of recipients.  Add your email address here.
     if (req.body.copy) {
         sendTo.push(req.body.fromEmail)
     }
