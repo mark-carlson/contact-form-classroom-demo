@@ -34,9 +34,6 @@ const sendMailFromGmail = (req, res, next) => {
     htmlTemplate = htmlTemplate.replace(new RegExp(`__SITE__`, 'g'), "mc.dev"); // <-- enter your website here
 
     const sendTo = [GMAIL_USER]; // array of recipients.  Add your email address here.
-    if (req.body.copy) {
-        sendTo.push(req.body.fromEmail)
-    }
 
     const mailOptions = {
         from: `${req.body.fromName} <${req.body.fromEmail}>`, // sender address
@@ -54,9 +51,25 @@ const sendMailFromGmail = (req, res, next) => {
             });
         } else {
             console.log('Email sent: ', info.response);
+            if (req.body.copy) {
+                mailOptions.to = `${req.body.fromName} <${req.body.fromEmail}>`;
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.log('error', error);
+                        res.status(503).json({
+                            message: 'send failed'
+                        });
+                    } else {
+                        res.status(200).json({
+                            message: "mail sent"
+                        })
+                    }
+                })
+            } else {
             res.status(200).json({
                 message: "mail sent"
             })
+        }
         }
     })
 }
