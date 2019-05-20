@@ -1,7 +1,16 @@
+/*** EDIT THESE VALUES ***/
+
+const GMAIL_USER = '<your gmail account>@gmail.com';
+const GMAIL_PASS = '<your password>';
+
+/*** EDIT THESE VALUES ***/
+
+
+
+
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
-
 const elementMap = {
     "subject": "SUBJECT",
     "fromName": "FROM-NAME",
@@ -13,8 +22,8 @@ const sendMailFromGmail = (req, res, next) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: '<your gmail account>@gmail.com',
-            pass: '<your password>'
+            user: GMAIL_USER,
+            pass: GMAIL_PASS
         }
     }); //NOTE:  Use .env variables here for your user & pass.  Keep your credentials out of your github repo.
 
@@ -24,7 +33,7 @@ const sendMailFromGmail = (req, res, next) => {
     }
     htmlTemplate = htmlTemplate.replace(new RegExp(`__SITE__`, 'g'), "mc.dev"); // <-- enter your website here
 
-    const sendTo = ['<your email here>']; // array of recipients.  Add your email address here.
+    const sendTo = [GMAIL_USER]; // array of recipients.  Add your email address here.
     if (req.body.copy) {
         sendTo.push(req.body.fromEmail)
     }
