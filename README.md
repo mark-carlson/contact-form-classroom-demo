@@ -11,8 +11,7 @@ Built with [create-react-app](https://github.com/facebookincubator/create-react-
 ## Prerequisites
 
 - Must have gmail credentials.
-- Enter your email address in /middlewares/gmail.js on lines 11 & 12
-- Enter the email address that you would like these messages directed to on /middlewares/gmail.js line 27.
+- Enter your email address in /middlewares/gmail.js on lines 3 & 4
 
 ## Installing
 
