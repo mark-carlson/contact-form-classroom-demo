@@ -1,12 +1,11 @@
 const express = require("express");
 const path = require("path");
 const routes = require("./routes");
-const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

@@ -28,9 +28,11 @@ const sendMailFromGmail = (req, res, next) => {
     }); //NOTE:  Use .env variables here for your user & pass.  Keep your credentials out of your github repo.
 
     let htmlTemplate = fs.readFileSync(path.resolve(__dirname, '../templates/email.html'), 'UTF-8');
-    for (const key in elementMap) {
+
+    Object.keys(elementMap).forEach(key => {
         htmlTemplate = htmlTemplate.replace(new RegExp(`__${elementMap[key]}__`, 'g'), req.body[key]);
-    }
+    });
+
     htmlTemplate = htmlTemplate.replace(new RegExp(`__SITE__`, 'g'), "mc.dev"); // <-- enter your website here
 
     const sendTo = [GMAIL_USER]; // array of recipients.  Add your email address here.
