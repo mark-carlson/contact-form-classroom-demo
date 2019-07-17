@@ -11,7 +11,7 @@ Built with [create-react-app](https://github.com/facebookincubator/create-react-
 ## Prerequisites
 
 - Must have gmail credentials.
-- Enter your email address in /middlewares/gmail.js on lines 3 & 4
+- Enter your email address and password in /middlewares/gmail.js on lines 3 & 4 (_Warning: Do not put your email/password in a public repo! Consider using an env variable._)
 
 ## Installing
 
@@ -19,23 +19,25 @@ Built with [create-react-app](https://github.com/facebookincubator/create-react-
 npm install
 ```
 
-To authorize gmail access from Heroku, visit this site after deployment:  [http://www.google.com/accounts/DisplayUnlockCaptcha](http://www.google.com/accounts/DisplayUnlockCaptcha)
+To authorize gmail access from Heroku, visit this site after deployment: [http://www.google.com/accounts/DisplayUnlockCaptcha](http://www.google.com/accounts/DisplayUnlockCaptcha)
 
 ## Communication
 
 ### Dev
+
 For Development, the webpack-dev-server is running on port 3000 serving react app, and the backend express server is running on port 3001. All of the requests sent by frontend app will be passed to express server via proxy.
 
 Web App <--- Webpack-dev-server <---> Proxy <---> Express Server
 
 ### Production
+
 For Production, all the frontend code will be compiled and moved into a static directory inside express server. Now there is just one express server running, which is serving both the frontend app and backend endpoints.
 
 Endpoints <--- Express Server ---> Web App
 
 ## Authors
 
-* **Mark Carlson**  - [Mark Carlson](https://mc.dev)
+- **Mark Carlson** - [Mark Carlson](https://mc.dev)
 
 ## License
 
