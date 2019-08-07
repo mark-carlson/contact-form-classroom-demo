@@ -28,7 +28,6 @@ const Contact = () => {
 
     const sendForm = () => {
         setIsSending(true);
-        console.log('userInput', userInput);
 
         fetch('api/send', {
             headers: {
