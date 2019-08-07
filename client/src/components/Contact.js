@@ -5,15 +5,22 @@ import 'sweetalert/dist/sweetalert.css';
 import './Contact.css';
 
 const Contact = () => {
-    const [fromEmail, setFromEmail] = useState('');
-    const [fromName, setFromName] = useState('');
-    const [subject, setSubject] = useState('');
-    const [body, setBody] = useState('');
-    const [copy, setCopy] = useState(false);
+    const clearForm = {
+        fromEmail: '',
+        fromName: '',
+        subject: '',
+        body: '',
+        copy: false
+    };
+
+    const [userInput, setUserInput] = useState(clearForm)
+    const [emailValid, setEmailValid] = useState(false);
     const [sendSuccessful, setSendSuccessful] = useState(false);
     const [sendFailure, setSendFailure] = useState(false);
-    const [emailValid, setEmailValid] = useState(false);
     const [isSending, setIsSending] = useState(false);
+
+    const {fromEmail, fromName, subject, body, copy} = userInput;
+
 
     const isEmailValid = (email) => {
         setEmailValid(email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i));
@@ -21,6 +28,7 @@ const Contact = () => {
 
     const sendForm = () => {
         setIsSending(true);
+        console.log('userInput', userInput);
 
         fetch('api/send', {
             headers: {
@@ -28,13 +36,7 @@ const Contact = () => {
                 "Content-Type": "application/json"
             },
             method: "post",
-            body: JSON.stringify({
-                fromEmail,
-                fromName,
-                subject,
-                body,
-                copy
-            })
+            body: JSON.stringify(userInput)
         }).then(result => {
             if (result.status === 503) {
                 setSendFailure(true);
@@ -47,28 +49,21 @@ const Contact = () => {
                 setSendSuccessful(true);
                 setIsSending(false);
                 setSendFailure(false);
-                setFromEmail("");
-                setFromName("");
-                setSubject("");
-                setBody("");
-                setCopy(false);
+                setUserInput(clearForm);
                 setEmailValid(false);
             }
         })
     }
 
-    const buttonContent = () => {
-        if (isSending) {
-            return <Preloader small />
-        } else {
-            return (
-                <div>
-                    <Icon right>send</Icon>
-                    <span>Send Email</span>
-                </div>
-            )
-        }
-    }
+    const buttonContent = () => (isSending) 
+        ? 
+            <Preloader small /> 
+        : 
+            <div>
+                <Icon right>send</Icon>
+                <span>Send Email</span>
+            </div>
+
     return (
         <Row>
             <Col s={12} m={6} offset="m3">
@@ -84,7 +79,10 @@ const Contact = () => {
                             s={12}
                             label="Email Address"
                             onChange={e => {
-                                setFromEmail(e.target.value);
+                                setUserInput({
+                                    ...userInput,
+                                    fromEmail: e.target.value
+                                })
                                 isEmailValid(e.target.value);
                             }}
                             className={(fromEmail.length && !emailValid) ? 'invalid' : 'valid'}
@@ -98,7 +96,10 @@ const Contact = () => {
                         type="text"
                         s={12}
                         label="Your Name"
-                        onChange={e => setFromName(e.target.value)}
+                        onChange={e => setUserInput({
+                            ...userInput,
+                            fromName: e.target.value
+                        })}
                         />
                     </Row>
                     <Row>
@@ -108,7 +109,10 @@ const Contact = () => {
                             type="text"
                             s={12}
                             label="Subject"
-                            onChange={e => setSubject(e.target.value)}
+                            onChange={e => setUserInput({
+                                ...userInput,
+                                subject: e.target.value
+                            })}
                         />
                     </Row>
                     <Row>
@@ -118,7 +122,10 @@ const Contact = () => {
                             type="textarea"
                             s={12}
                             label="Your message"
-                            onChange={e => setBody(e.target.value)}
+                            onChange={e => setUserInput({
+                                ...userInput,
+                                body: e.target.value
+                            })}
                         />
                     </Row>
                     <Row>
@@ -127,7 +134,10 @@ const Contact = () => {
                             name="copy"
                             type="checkbox"
                             label="Send a copy to you?"
-                            onChange={() => setCopy(!copy)}
+                            onChange={() => setUserInput({
+                                ...userInput,
+                                copy: !copy
+                            })}
                             s={12}
                         />
                     </Row>
