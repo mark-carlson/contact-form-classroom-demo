@@ -66,7 +66,7 @@ const Contact = () => {
 
     return (
         <Row>
-            <Col s={12} m={6} offset="m3">
+            <Col s={12} l={6} offset="l3">
                 <Card className="darken-1"
                 textClassName="grey-text"
                 title="Email Form"
