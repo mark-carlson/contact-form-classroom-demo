@@ -42,7 +42,7 @@ Endpoints <--- Express Server ---> Web App
 
 ## Authors
 
-- **Mark Carlson** - [Mark Carlson](https://mc.dev)
+- [**Mark Carlson**](https://mc.dev)
 
 ## License
 
