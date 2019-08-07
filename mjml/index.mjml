@@ -22,8 +22,8 @@
         <mj-text align="center" font-weight="bold" font-size="18px">
           __SUBJECT__
         </mj-text>
-        <mj-text font-size="18px">
-          __FROM__
+        <mj-text font-size="14px">
+          From: __FROM-NAME__ (__FROM-EMAIL__)
         </mj-text>
       </mj-column>
     </mj-section>

@@ -1,13 +1,14 @@
-/*** EDIT THESE VALUES ***/
+/**
+ * Create a .env file that contains your email credentials:
 
-const GMAIL_USER = '<your gmail account>@gmail.com';
-const GMAIL_PASS = '<your password>';
+ GMAIL_USER = **your_email_address**@gmail.com
+ GMAIL_PASS = **secret_password_here**
 
-/*** EDIT THESE VALUES ***/
-
-
+ */
 
 
+
+require('dotenv').config();
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
@@ -22,8 +23,8 @@ const sendMailFromGmail = (req, res, next) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: GMAIL_USER,
-            pass: GMAIL_PASS
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS
         }
     }); //NOTE:  Use .env variables here for your user & pass.  Keep your credentials out of your github repo.
 
@@ -35,7 +36,7 @@ const sendMailFromGmail = (req, res, next) => {
 
     htmlTemplate = htmlTemplate.replace(new RegExp(`__SITE__`, 'g'), "mc.dev"); // <-- enter your website here
 
-    const sendTo = [GMAIL_USER]; // array of recipients.  Add your email address here.
+    const sendTo = [process.env.GMAIL_USER]; // array of recipients.  Add your email address here.
 
     const mailOptions = {
         from: `${req.body.fromName} <${req.body.fromEmail}>`, // sender address
