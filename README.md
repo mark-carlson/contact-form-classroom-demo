@@ -11,7 +11,12 @@ Built with [create-react-app](https://github.com/facebookincubator/create-react-
 ## Prerequisites
 
 - Must have gmail credentials.
-- Enter your email address and password in /middlewares/gmail.js on lines 3 & 4 (_Warning: Do not put your email/password in a public repo! Consider using an env variable._)
+- Enter your email credentials in a .env file:
+
+```
+GMAIL_USER=**your_email_address**@gmail.com
+GMAIL_PASS=**secret_password_here**
+```
 
 ## Installing
 
@@ -19,7 +24,7 @@ Built with [create-react-app](https://github.com/facebookincubator/create-react-
 npm install
 ```
 
-To authorize gmail access from Heroku, visit this site after deployment: [http://www.google.com/accounts/DisplayUnlockCaptcha](http://www.google.com/accounts/DisplayUnlockCaptcha)
+To authorize gmail access from Heroku or some other host, visit this site after deployment: [http://www.google.com/accounts/DisplayUnlockCaptcha](http://www.google.com/accounts/DisplayUnlockCaptcha)
 
 ## Communication
 
