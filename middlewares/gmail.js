@@ -1,10 +1,11 @@
 /**
- * Create a .env file that contains your email credentials:
 
- GMAIL_USER = **your_email_address**@gmail.com
- GMAIL_PASS = **secret_password_here**
-
- */
+Create a .env file that contains your email credentials:
+ 
+GMAIL_USER=**your_email_address**@gmail.com
+GMAIL_PASS=**secret_password_here**
+ 
+*/
 
 
 
