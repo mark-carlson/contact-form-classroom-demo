@@ -42,6 +42,10 @@ For Production, all the frontend code will be compiled and moved into a static d
 
 Endpoints <--- Express Server ---> Web App
 
+Nginx proxy should point to `http://localhost:3001`
+
+After deployment to Digital Ocean, email will fail initially.  Check `pm2 logs` to find a link to authorize access.
+
 ## Authors
 
 - [**Mark Carlson**](https://mc.dev)
