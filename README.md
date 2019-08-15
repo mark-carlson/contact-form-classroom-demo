@@ -16,6 +16,8 @@ Built with [create-react-app](https://github.com/facebookincubator/create-react-
 ```
 GMAIL_USER=**your_email_address**@gmail.com
 GMAIL_PASS=**secret_password_here**
+# in PRODUCTION uncomment the line below:
+#NODE_ENV=production
 ```
 
 ## Installing
